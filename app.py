@@ -2,6 +2,7 @@ import streamlit as st
 from genres.page import show_genres
 from actors.page import show_actors
 from reviews.page import show_reviews
+from movies.page import show_movies
 
 def main():
     st.title('Flix app')
@@ -21,7 +22,7 @@ def main():
         show_actors()
 
     if menu_option == 'Filmes':
-        st.write('Filmes')
+        show_movies()
         
     if menu_option == 'Avaliações':
         show_reviews()    
