@@ -1,7 +1,11 @@
 import streamlit as st
 
 
-st.title('Flix app')
+def main():
+    st.title('Flix app')
 
 
-st.divider()
+
+
+if __name__ == '__main__':
+    main()
