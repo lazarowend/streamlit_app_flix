@@ -17,7 +17,7 @@ def show_actors():
         key='actors_grid',
         )
 
-    st.title('Cadastrar novo Gênero')
+    st.title('Cadastrar novo Ator/Atriz')
     name = st.text_input('Nome do Gênero')
     birthday = st.date_input('Data de Nascimento')
     nationality = st.text_input('Nacionalidade')
