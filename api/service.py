@@ -22,4 +22,5 @@ class Auth:
 
         if auth_response.status_code == 200:
             return auth_response.json()
-        return {'error': f'Erro ao autenticar. Status code: {auth_response.status_code}'}
+        return {'error': f'Erro ao realizar login, Erro ao autenticar. Status code: {auth_response.status_code}'}
+    
