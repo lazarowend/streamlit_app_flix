@@ -3,14 +3,17 @@ from st_aggrid import AgGrid
 import pandas as pd
 
 genres = [
-{'id': 1, 'name': 'teste'}
+    {'ID': 1, 'Gênero': 'Teste'},
+    {'ID': 2, 'Gênero': 'Aventura'},
 ]
+
 
 def show_genres():
     st.write('Lista de Gêneros')
 
     AgGrid(
-        data=pd.DataFrame(genres)
+        data=pd.DataFrame(genres),
+        key='genre_grid'
         )
 
     st.title('Cadastrar novo Gênero')
