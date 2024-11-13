@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from st_aggrid import AgGrid
 from genres.service import GenreService
-import time
+from time import sleep
 
 def show_genres():
     genre_service = GenreService()
@@ -27,5 +27,5 @@ def show_genres():
         else:
             genre_service.create_genre(name)
             st.success(f'Gênero {name} cadastrado com sucesso!')
-            time.sleep(1)
+            sleep(1)
             st.rerun()

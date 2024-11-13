@@ -33,8 +33,9 @@ def show_actors():
     if actors:
         st.write('Lista de Atores/Atrizes')
 
+        actors_df = pd.json_normalize(actors)
         AgGrid(
-            data=pd.DataFrame(actors),
+            data=actors_df,
             key='actors_grid',
             )
     else:

@@ -3,19 +3,19 @@ import requests
 from login.service import logout
 
 
-class ActorRepository:
+class MovieRepository:
 
 
     def __init__(self):
         self.__base_url = 'http://127.0.0.1:8000/api/v1/'
-        self.__actor_url = f'{self.__base_url}actors/'
+        self.__movie_url = f'{self.__base_url}movies/'
         self.__headers = {
             'Authorization': f'Bearer {st.session_state.token}'
         }
 
-    def get_actors(self):
+    def get_movies(self):
         response = requests.get(
-            self.__actor_url,
+            self.__movie_url,
             headers=self.__headers
         )
 
@@ -28,10 +28,10 @@ class ActorRepository:
         
         raise Exception(f'Erro ao obter dados da API. Status code: {response.status_code}')
 
-    def create_actor(self, actor):
+    def create_movie(self, movie):
         response = requests.post(
-            self.__actor_url,
-            data=actor,
+            self.__movie_url,
+            data=movie,
             headers=self.__headers
         )
 
@@ -42,13 +42,13 @@ class ActorRepository:
             logout()
             return None
         
-        raise Exception(f'Erro ao criar um ator/atriz. Status code: {response.status_code}')
+        raise Exception(f'Erro ao criar um Filme. Status code: {response.status_code}')
 
-    def update_actor(self, actor):
-        actor_update_url = f'{self.__actor_url}{actor["id"]}/'
+    def update_movie(self, movie):
+        movie_update_url = f'{self.__movie_url}{movie["id"]}/'
         response = requests.put(
-            actor_update_url,
-            data=actor,
+            movie_update_url,
+            data=movie,
             headers=self.__headers
         )
 
@@ -59,20 +59,20 @@ class ActorRepository:
             logout()
             return None
         
-        raise Exception(f'Erro ao atualizar um ator/atriz. Status code: {response.status_code}')
+        raise Exception(f'Erro ao atualizar um Filme. Status code: {response.status_code}')
 
-    def delete_actor(self, actor_id):
-        actor_delete_url = f'{self.__actor_url}{actor_id}/'
+    def delete_movie(self, movie_id):
+        movie_delete_url = f'{self.__movie_url}{movie_id}/'
         response = requests.delete(
-            actor_delete_url,
+            movie_delete_url,
             headers=self.__headers
         )
 
         if response.status_code == 204:
-            return {"message": "ator/atriz deletado com sucesso"}
+            return {"message": "Filme deletado com sucesso"}
         
         if response.status_code == 401:
             logout()
             return None
         
-        raise Exception(f'Erro ao deletar um ator/atriz. Status code: {response.status_code}')
+        raise Exception(f'Erro ao deletar um Filme. Status code: {response.status_code}')
