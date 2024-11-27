@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 from login.service import logout
 
+
 class GenreRepository:
 
     def __init__(self):
@@ -23,7 +24,7 @@ class GenreRepository:
         if response.status_code == 401:
             logout()
             return None
-        
+
         raise Exception(f'Erro ao obter dados da API. Status code: {response.status_code}')
 
     def create_genre(self, genre):
@@ -35,11 +36,11 @@ class GenreRepository:
 
         if response.status_code == 201:
             return response.json()
-        
+
         if response.status_code == 401:
             logout()
             return None
-        
+
         raise Exception(f'Erro ao criar um gênero. Status code: {response.status_code}')
 
     def update_genre(self, genre):
@@ -50,13 +51,13 @@ class GenreRepository:
             headers=self.__headers
         )
 
-        if response.status_code == 200:  # Código 200 para sucesso em update
+        if response.status_code == 200:
             return response.json()
-        
+
         if response.status_code == 401:
             logout()
             return None
-        
+
         raise Exception(f'Erro ao atualizar um gênero. Status code: {response.status_code}')
 
     def delete_genre(self, genre_id):
@@ -66,11 +67,11 @@ class GenreRepository:
             headers=self.__headers
         )
 
-        if response.status_code == 204:  # Código 204 para sucesso em delete
+        if response.status_code == 204:
             return {"message": "Gênero deletado com sucesso"}
-        
+
         if response.status_code == 401:
             logout()
             return None
-        
+
         raise Exception(f'Erro ao deletar um gênero. Status code: {response.status_code}')

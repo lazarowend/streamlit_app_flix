@@ -25,7 +25,7 @@ class ActorRepository:
         if response.status_code == 401:
             logout()
             return None
-        
+
         raise Exception(f'Erro ao obter dados da API. Status code: {response.status_code}')
 
     def create_actor(self, actor):
@@ -37,11 +37,11 @@ class ActorRepository:
 
         if response.status_code == 201:
             return response.json()
-        
+
         if response.status_code == 401:
             logout()
             return None
-        
+
         raise Exception(f'Erro ao criar um ator/atriz. Status code: {response.status_code}')
 
     def update_actor(self, actor):
@@ -54,11 +54,11 @@ class ActorRepository:
 
         if response.status_code == 200:
             return response.json()
-        
+
         if response.status_code == 401:
             logout()
             return None
-        
+
         raise Exception(f'Erro ao atualizar um ator/atriz. Status code: {response.status_code}')
 
     def delete_actor(self, actor_id):
@@ -70,9 +70,9 @@ class ActorRepository:
 
         if response.status_code == 204:
             return {"message": "ator/atriz deletado com sucesso"}
-        
+
         if response.status_code == 401:
             logout()
             return None
-        
+
         raise Exception(f'Erro ao deletar um ator/atriz. Status code: {response.status_code}')

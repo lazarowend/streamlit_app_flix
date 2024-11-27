@@ -4,6 +4,7 @@ from actors.page import show_actors
 from reviews.page import show_reviews
 from movies.page import show_movies
 from login.page import show_login
+from home.page import show_home
 
 
 def main():
@@ -13,15 +14,14 @@ def main():
     else:
         st.title('Flix app')
 
-
         menu_option = st.sidebar.selectbox(
             'Selecione uma opção',
             ['Início', 'Gêneros', 'Atores/Atrizes', 'Filmes', 'Avaliações']
         )
-        
+
         if menu_option == 'Início':
-            st.write('Início')
-            
+            show_home()
+
         if menu_option == 'Gêneros':
             show_genres()
 
@@ -30,7 +30,7 @@ def main():
 
         if menu_option == 'Filmes':
             show_movies()
-            
+
         if menu_option == 'Avaliações':
             show_reviews()    
 
